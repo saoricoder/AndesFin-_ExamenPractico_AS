@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProductoRepository extends JpaRepository<ProductoFinanciero, UUID> {
-    List<ProductoFinanciero> findbyActivoTrue();
+    List<ProductoFinanciero> findByActivoTrue();
 }

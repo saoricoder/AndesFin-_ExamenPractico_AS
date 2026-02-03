@@ -14,8 +14,8 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
-    private List<ProductoDTO> listarActivos(){
-        return productoRepository.findbyActivoTrue().stream()
+    public List<ProductoDTO> listarActivos(){
+        return productoRepository.findByActivoTrue().stream()
                 .map(this::convertToDTO).collect(Collectors.toList());
     }
 
@@ -30,4 +30,3 @@ public class ProductoService {
         return dto;
     }
 }
-

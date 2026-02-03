@@ -1,5 +1,5 @@
 # AndesFin - Simulador de Inversiones
-
+Nombre Betty Rodriguez
 ## Descripción del Proyecto
 AndesFin es una aplicación backend desarrollada en Java con Spring Boot que permite a los usuarios simular inversiones financieras. El sistema evalúa el capital disponible de un usuario y selecciona una combinación óptima de productos financieros para maximizar el retorno de inversión, respetando las restricciones presupuestarias.
 
@@ -10,17 +10,38 @@ El núcleo de la aplicación utiliza un algoritmo de optimización para recomend
 *   **Spring Boot 3**: Framework para el desarrollo de la aplicación web y gestión de dependencias.
 *   **Spring Data JPA**: Para la persistencia de datos y mapeo objeto-relacional (ORM).
 *   **MySQL**: Base de datos relacional para almacenar usuarios, productos y simulaciones.
+*   **Docker & Docker Compose**: Para la contenedorización y despliegue de la aplicación y base de datos.
 *   **Lombok**: Librería para reducir el código boilerplate (getters, setters, constructores).
 *   **Maven**: Herramienta de gestión de proyectos y construcción.
 
 ## Instrucciones de Instalación y Ejecución
 
-### Prerrequisitos
+### Opción 1: Ejecución con Docker (Recomendada)
+Esta opción levanta automáticamente la base de datos MySQL y la aplicación backend sin necesidad de instalar Java o MySQL localmente.
+
+**Prerrequisitos:**
+*   Tener instalado **Docker** y **Docker Compose**.
+
+**Pasos:**
+1.  Clone el repositorio o descargue el código fuente.
+2.  Abra una terminal y navegue a la carpeta del proyecto (donde está el archivo `docker-compose.yml`):
+    ```bash
+    cd AndesFin
+    ```
+3.  Ejecute el siguiente comando para construir y levantar los servicios:
+    ```bash
+    docker-compose up --build
+    ```
+4.  Espere a que los contenedores inicien. La aplicación estará disponible en `http://localhost:8080`.
+
+### Opción 2: Ejecución Local (Manual)
+
+**Prerrequisitos:**
 1.  Tener instalado **Java JDK 17** o superior.
 2.  Tener instalado **Maven**.
 3.  Tener instalado y ejecutándose **MySQL Server**.
 
-### Configuración de la Base de Datos
+**Configuración de la Base de Datos:**
 1.  Cree una base de datos en MySQL llamada `andesfin_db`:
     ```sql
     CREATE DATABASE andesfin_db;
@@ -32,10 +53,9 @@ El núcleo de la aplicación utiliza un algoritmo de optimización para recomend
     spring.datasource.password=root
     ```
 
-### Ejecución
-1.  Clone el repositorio o descargue el código fuente.
-2.  Navegue a la carpeta raíz del proyecto.
-3.  Ejecute el siguiente comando para compilar y ejecutar la aplicación:
+**Ejecución:**
+1.  Navegue a la carpeta raíz del proyecto.
+2.  Ejecute el siguiente comando para compilar y ejecutar la aplicación:
     ```bash
     ./mvnw spring-boot:run
     ```

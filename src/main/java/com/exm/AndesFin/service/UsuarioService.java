@@ -13,7 +13,8 @@ import java.util.stream.Collectors;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-    private List<UsuarioDTO>listarTodos(){
+
+    public List<UsuarioDTO> listarTodos(){
         return usuarioRepository.findAll().stream()
                 .map(this::convertToDTO).collect(Collectors.toList());
     }
