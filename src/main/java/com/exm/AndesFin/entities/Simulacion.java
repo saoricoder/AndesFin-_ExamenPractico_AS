@@ -1,19 +1,32 @@
 package com.exm.AndesFin.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table(name = "simulaciones")
+@Data
 public class Simulacion {
 
     @Id
     @GeneratedValue
     private UUID id;
-    private  usuario_id;
-    private String fecha_simulacion;
-    private BigDecimal capital_disponible;
-    private BigDecimal ganacia_total;
-    private  productos_seleccionado;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+    private LocalDateTime fechaSimulacion;
+
+    private BigDecimal capitalDisponible;
+
+    private BigDecimal gananciaTotal;
+
+    @ManyToMany
+    private List<ProductoFinanciero> productosSeleccionados;
 }
