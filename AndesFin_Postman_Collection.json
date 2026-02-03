@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "b5a6c7d8-e9f0-1234-5678-90abcdef1234",
+		"name": "AndesFin API",
+		"description": "Colección de endpoints para el simulador de inversiones AndesFin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios"
+					]
+				},
+				"description": "Obtiene la lista de todos los usuarios registrados."
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Productos Activos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/productos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"productos"
+					]
+				},
+				"description": "Obtiene la lista de todos los productos financieros activos."
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar Simulación",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"usuarioId\": \"{{usuario_id}}\",\n  \"capitalDisponible\": 3000.00,\n  \"productos\": [\n    {\n      \"nombre\": \"Fondo Acciones Tech\",\n      \"costo\": 1000.00,\n      \"porcentajeRetorno\": 8.50\n    },\n    {\n      \"nombre\": \"Bonos Corporativos AAA\",\n      \"costo\": 500.00,\n      \"porcentajeRetorno\": 5.25\n    },\n    {\n      \"nombre\": \"ETF Global\",\n      \"costo\": 1500.00,\n      \"porcentajeRetorno\": 12.00\n    },\n    {\n      \"nombre\": \"Fondo de Dividendos\",\n      \"costo\": 800.00,\n      \"porcentajeRetorno\": 6.75\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/simulaciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"simulaciones"
+					]
+				},
+				"description": "Realiza una simulación de inversión basada en el capital y productos proporcionados."
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Historial de Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/simulaciones/{{usuario_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"simulaciones",
+						"{{usuario_id}}"
+					]
+				},
+				"description": "Consulta el historial de simulaciones de un usuario específico."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "usuario_id",
+			"value": "REEMPLAZAR_CON_UUID_REAL",
+			"type": "string"
+		}
+	]
+}
